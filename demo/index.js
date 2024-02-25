@@ -39,7 +39,7 @@ const server_port = process.env.server_port || 8080
 
 const Bot = new RealCozeAPI({
     session: process.env.session_id,
-    bot: JSON.parse(fs.readFileSync(process.env.bot_config_path || "./config.json"), "utf-8"),
+    bot: JSON.parse(process.env.config, "utf-8"),
     tmppath: process.env.tmp_path || "./temp",
     proxy: process.env.proxy || null
 })
