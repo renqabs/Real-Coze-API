@@ -44,13 +44,13 @@
         const inputContent = $I.value
         const $me = document.createElement("p")
         // 使用 marked 解析 Markdown 输入
-        $me.innerHTML = marked(`Me> ${inputContent}`)
+        $me.innerHTML = marked.parse(`Me> ${inputContent}`)
         $H.appendChild($me)
         const $Atri = document.createElement("span")
         $H.appendChild($Atri)
         RealCozeAPI.send(inputContent, (data) => {
             // 使用 marked 解析 Markdown 输出
-            $Atri.innerHTML = marked(`Atri> ${data.content}`)
+            $Atri.innerHTML = marked.parse(`Atri> ${data.content}`)
             if (!data.continue) {
                 $B.disabled = false
                 $I.disabled = false
