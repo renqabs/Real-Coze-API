@@ -5,14 +5,6 @@
 <script>
     function RealCozeAPIClient(url) {
         this.ChatHistory = [
-            {
-                "role": 2,
-                "content": "Atri，你认得我吗"
-            },
-            {
-                "role": 1,
-                "content": "夏生先生！当然认得了！有什么事吗？夜深了，这么晚还不休息？"
-            }
         ]
         this.send = (content, callback) => {
             this.ChatHistory.push({ role: 2, content })
