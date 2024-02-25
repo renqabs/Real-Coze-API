@@ -1,7 +1,7 @@
 <span id="ChatHistory"></span>
 </br>
 <span><input type="text" id="ChatInput" /><button id="ChatSend">发送</button></span>
-<!-- <script src="https://registry.npmmirror.com/marked/12.0.0/files/marked.min.js"></script> -->
+<script src="https://registry.npmmirror.com/marked/12.0.0/files/marked.min.js"></script>
 <script>
     function RealCozeAPIClient(url) {
         this.ChatHistory = [
@@ -51,12 +51,14 @@
         $I.disabled = true
         const inputContent = $I.value
         const $me = document.createElement("p")
-        $me.innerText = `Me> ${inputContent}`
+        // 使用 marked 解析 Markdown 输入
+        $me.innerHTML = marked(`Me> ${inputContent}`)
         $H.appendChild($me)
         const $Atri = document.createElement("span")
         $H.appendChild($Atri)
         RealCozeAPI.send(inputContent, (data) => {
-            $Atri.innerText = `Atri> ${data.content}`
+            // 使用 marked 解析 Markdown 输出
+            $Atri.innerHTML = marked(`Atri> ${data.content}`)
             if (!data.continue) {
                 $B.disabled = false
                 $I.disabled = false
